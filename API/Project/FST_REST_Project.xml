@@ -117,7 +117,7 @@
               </con:configuration>
             </con:assertion>
             <con:credentials>
-              <con:selectedAuthProfile>FSTAdmin</con:selectedAuthProfile>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
               <con:authType>No Authorization</con:authType>
             </con:credentials>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
@@ -145,7 +145,7 @@
               </con:configuration>
             </con:assertion>
             <con:credentials>
-              <con:selectedAuthProfile>FSTAdmin</con:selectedAuthProfile>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
               <con:authType>No Authorization</con:authType>
             </con:credentials>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
@@ -186,7 +186,7 @@
               </con:configuration>
             </con:assertion>
             <con:credentials>
-              <con:selectedAuthProfile>FSTAdmin</con:selectedAuthProfile>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
               <con:authType>No Authorization</con:authType>
             </con:credentials>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
