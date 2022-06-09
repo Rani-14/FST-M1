@@ -3,7 +3,7 @@
   <con:settings/>
   <con:interface xsi:type="con:RestService" id="77381f30-d0fc-4b7d-a752-8622c6f83009" wadlVersion="http://wadl.dev.java.net/2009/02" name="https://api.github.com" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache/>
+    <con:definitionCache type="TEXT" rootPart=""/>
     <con:endpoints>
       <con:endpoint>https://api.github.com</con:endpoint>
     </con:endpoints>
@@ -64,6 +64,16 @@
             <con:description xsi:nil="true"/>
           </con:parameter>
         </con:parameters>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>204</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
         <con:request name="Request 1" id="dae45469-c582-45de-a860-5112471c39d1" mediaType="application/json">
           <con:settings/>
           <con:endpoint>https://api.github.com</con:endpoint>
@@ -77,8 +87,16 @@
       </con:method>
     </con:resource>
   </con:interface>
-  <con:testSuite id="d94c24c8-8b55-4e41-9d11-4ffd6f5f365e" name="https://api.github.com Test Suite">
-    <con:settings/>
+  <con:testSuite id="d94c24c8-8b55-4e41-9d11-4ffd6f5f365e" name="Test Suite">
+    <con:settings>
+      <con:setting id="IncludeOverview">true</con:setting>
+      <con:setting id="IncludeResults">true</con:setting>
+      <con:setting id="FlowLayout">false</con:setting>
+      <con:setting id="ErrorDetails">true</con:setting>
+      <con:setting id="IncludeCoverage">true</con:setting>
+      <con:setting id="GeneratableJUnitReport@Style">Multiple Pages</con:setting>
+      <con:setting id="GeneratableJUnitReport@Folder">C:\Users\0005Z4744\IdeaProjects\FST-API</con:setting>
+    </con:settings>
     <con:runType>SEQUENTIAL</con:runType>
     <con:testCase id="6542adb5-bb14-4f01-af8d-59e52a76966e" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Test Case" searchProperties="true" timeout="0">
       <con:settings/>
@@ -135,6 +153,22 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="cfc4167a-b986-49a9-9eed-02a846702787">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>id</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Post Request</con:sourceStep>
+            <con:sourcePath>$[id]</con:sourcePath>
+            <con:targetType>keyId</con:targetType>
+            <con:targetStep>Delete Request</con:targetStep>
+            <con:targetPath/>
+            <con:type>JSONPATH</con:type>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
       <con:testStep type="restrequest" name="Delete Request" id="fd1d0665-c945-4693-9915-4fc66d7588b3">
         <con:settings/>
         <con:config service="https://api.github.com" resourcePath="/user/keys/{keyId}" methodName="KeyId" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -144,10 +178,11 @@
             </con:settings>
             <con:endpoint>https://api.github.com</con:endpoint>
             <con:request/>
+            <con:originalUri>https://api.github.com/user/keys/67213829</con:originalUri>
             <con:assertion type="Valid HTTP Status Codes" id="d3214a04-d592-4255-8799-02a46dcc0ca5" name="Valid HTTP Status Codes">
               <con:settings/>
               <con:configuration>
-                <codes>200</codes>
+                <codes>204</codes>
               </con:configuration>
             </con:assertion>
             <con:credentials>
@@ -156,7 +191,7 @@
             </con:credentials>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
             <con:parameters>
-              <con:entry key="keyId" value="keyId"/>
+              <con:entry key="keyId" value="67214072"/>
             </con:parameters>
             <con:parameterOrder>
               <con:entry>keyId</con:entry>
@@ -190,9 +225,13 @@
   </con:oAuth2ProfileContainer>
   <con:oAuth1ProfileContainer/>
   <con:reporting>
+    <con:reportTemplates/>
+    <con:xmlTemplates/>
     <con:xmlTemplates/>
     <con:parameters/>
+    <con:parameters/>
   </con:reporting>
+  <con:reporting/>
   <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
     <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
 // This code is often used for adding custom authentication to ReadyAPI functional tests
